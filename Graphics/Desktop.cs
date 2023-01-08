@@ -4,7 +4,7 @@ using IL2CPU.API.Attribs;
 using System;
 using System.Drawing;
 
-namespace CosmosOperatingSystem.Graphics
+namespace EstaconOS.Graphics
 {
     internal class Desktop
     {
@@ -14,15 +14,15 @@ namespace CosmosOperatingSystem.Graphics
         static Bitmap BACKGROUND;
         static Bitmap POWER_BUTTON;
 
-        [ManifestResourceStream(ResourceName = "CosmosOperatingSystem.Resources.iconbg.bmp")]
+        [ManifestResourceStream(ResourceName = "EstaconOS.Resources.iconbg.bmp")]
         static byte[] IconBackground;
-        [ManifestResourceStream(ResourceName = "CosmosOperatingSystem.Resources.missingicon.bmp")]
+        [ManifestResourceStream(ResourceName = "EstaconOS.Resources.missingicon.bmp")]
         static byte[] MissingIcon;
-        [ManifestResourceStream(ResourceName = "CosmosOperatingSystem.Resources.consoleicon.bmp")]
+        [ManifestResourceStream(ResourceName = "EstaconOS.Resources.consoleicon.bmp")]
         static byte[] ConsoleIcon;
-        [ManifestResourceStream(ResourceName = "CosmosOperatingSystem.Resources.background.bmp")]
+        [ManifestResourceStream(ResourceName = "EstaconOS.Resources.background.bmp")]
         static byte[] Background;
-        [ManifestResourceStream(ResourceName = "CosmosOperatingSystem.Resources.powerbutton.bmp")]
+        [ManifestResourceStream(ResourceName = "EstaconOS.Resources.powerbutton.bmp")]
         static byte[] PowerButton;
 
         public static void init()

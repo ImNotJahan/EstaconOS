@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CosmosOperatingSystem.Graphics.Components
+namespace EstaconOS.Graphics.Components
 {
     internal class Button
     {

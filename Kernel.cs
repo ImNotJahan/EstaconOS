@@ -1,9 +1,9 @@
-﻿using CosmosOperatingSystem.Graphics;
+﻿using EstaconOS.Graphics;
 using System;
 using System.Collections.Generic;
 using Sys = Cosmos.System;
 
-namespace CosmosOperatingSystem
+namespace EstaconOS
 {
     public class Kernel : Sys.Kernel
     {

@@ -2,7 +2,7 @@
 using Cosmos.System.Graphics;
 using System.Drawing;
 
-namespace CosmosOperatingSystem.Graphics
+namespace EstaconOS.Graphics
 {
     internal class MouseHandler
     {

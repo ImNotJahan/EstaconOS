@@ -4,14 +4,14 @@ using Cosmos.System.Graphics;
 using Cosmos.System.Graphics.Fonts;
 using IL2CPU.API.Attribs;
 
-namespace CosmosOperatingSystem.Graphics
+namespace EstaconOS.Graphics
 {
     internal class DisplayHandler
     {
         public static Canvas canvas;
         public static int[] SCREEN_SIZE = new int[2] { 1920, 1080 };
 
-        [ManifestResourceStream(ResourceName = "CosmosOperatingSystem.Resources.goha-16.psf")]
+        [ManifestResourceStream(ResourceName = "EstaconOS.Resources.goha-16.psf")]
         private static byte[] Font;
         public static PCScreenFont FONT;
 
