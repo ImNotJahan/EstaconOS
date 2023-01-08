@@ -52,10 +52,15 @@ namespace EstaconOS.Graphics
             DisplayHandler.canvas.DrawImageAlpha(ICON_BACKGROUND, 400, 400);
             DisplayHandler.canvas.DrawImageAlpha(MISSING_ICON, 400, 400);
             DisplayHandler.canvas.DrawImageAlpha(POWER_BUTTON, 0, 0);
+            DisplayHandler.canvas.DrawString(DateTime.Now.ToString("D"), DisplayHandler.FONT, new Pen(Color.Black), 20, 16);
+
+            GetClockPixels();
         }
 
         public static void Update()
         {
+            UpdateClock();
+
             int mx = (int)MouseManager.X;
             int my = (int)MouseManager.Y;
 
@@ -67,6 +72,39 @@ namespace EstaconOS.Graphics
                 } else if (mx >= 1787 && my >= 20 && mx < 1837 && my < 70)
                 {
                     Power.Reboot();
+                }
+            }
+        }
+
+        static Color[] pixelsUnderClock = new Color[11 * 16 * 16];
+        static string lastTime = "";
+        static void UpdateClock()
+        {
+            string time = DateTime.Now.ToString("t");
+
+            if (lastTime == time) return;
+
+            lastTime = time;
+
+            for (int x = 0; x < 8 * 16; x++)
+            {
+                for (int y = 0; y < 16; y++)
+                {
+                    DisplayHandler.canvas.DrawPoint(new Pen(pixelsUnderClock[y * 16 * 8 + x]), 20 + x, 58 + y);
+                }
+            }
+
+            DisplayHandler.canvas.DrawString(time, DisplayHandler.FONT, new Pen(Color.Black), 20, 58);
+        }
+
+        static void GetClockPixels()
+        {
+            // 8 * 16 as time is max 8 char long
+            for(int x = 0; x < 8 * 16; x++)
+            {
+                for(int y = 0; y < 16; y++)
+                {
+                    pixelsUnderClock[y * 16 * 8 + x] = DisplayHandler.canvas.GetPointColor(20 + x, 58 + y); 
                 }
             }
         }
