@@ -1,5 +1,6 @@
 ﻿using Cosmos.System;
 using Cosmos.System.Graphics;
+using EstaconOS.Graphics.Components;
 using IL2CPU.API.Attribs;
 using System;
 using System.Drawing;
@@ -13,6 +14,7 @@ namespace EstaconOS.Graphics
         static Bitmap CONSOLE_ICON;
         static Bitmap BACKGROUND;
         static Bitmap POWER_BUTTON;
+        public static Bitmap WINDOW_OPERATORS;
 
         [ManifestResourceStream(ResourceName = "EstaconOS.Resources.iconbg.bmp")]
         static byte[] IconBackground;
@@ -24,6 +26,8 @@ namespace EstaconOS.Graphics
         static byte[] Background;
         [ManifestResourceStream(ResourceName = "EstaconOS.Resources.powerbutton.bmp")]
         static byte[] PowerButton;
+        [ManifestResourceStream(ResourceName = "EstaconOS.Resources.windowoperators.bmp")]
+        static byte[] WindowOperators;
 
         public static void init()
         {
@@ -34,6 +38,7 @@ namespace EstaconOS.Graphics
                 CONSOLE_ICON = new Bitmap(ConsoleIcon);
                 BACKGROUND = new Bitmap(Background);
                 POWER_BUTTON = new Bitmap(PowerButton);
+                WINDOW_OPERATORS = new Bitmap(WindowOperators);
             }
             catch { }
         }
@@ -72,6 +77,9 @@ namespace EstaconOS.Graphics
                 } else if (mx >= 1787 && my >= 20 && mx < 1837 && my < 70)
                 {
                     Power.Reboot();
+                } else if(mx >= 400 && my >= 400 && mx < 475 && my < 475)
+                {
+                    new Window(600, 500, 200, 200, "test window");
                 }
             }
         }

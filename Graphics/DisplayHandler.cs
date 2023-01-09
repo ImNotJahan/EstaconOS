@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using Cosmos.System.Graphics;
 using Cosmos.System.Graphics.Fonts;
+using EstaconOS.Graphics.Components;
 using IL2CPU.API.Attribs;
 
 namespace EstaconOS.Graphics
 {
     internal class DisplayHandler
     {
+        public static List<Window> windows = new();
+
         public static Canvas canvas;
         public static int[] SCREEN_SIZE = new int[2] { 1920, 1080 };
 
@@ -31,6 +35,8 @@ namespace EstaconOS.Graphics
         {
             MouseHandler.Update();
             Desktop.Update();
+
+            windows.ForEach(window => { window.Update(); });
             
             canvas.Display();
         }

@@ -28,6 +28,7 @@
       <None Remove="Resources\missingicon.bmp" />
       <None Remove="Resources\powerbutton.bmp" />
       <None Remove="Resources\wallpaper.bmp" />
+      <None Remove="Resources\windowoperators.bmp" />
     </ItemGroup>
 
     <ItemGroup>
@@ -37,6 +38,7 @@
       <EmbeddedResource Include="Resources\iconbg.bmp" />
       <EmbeddedResource Include="Resources\missingicon.bmp" />
       <EmbeddedResource Include="Resources\powerbutton.bmp" />
+      <EmbeddedResource Include="Resources\windowoperators.bmp" />
     </ItemGroup>
 
     <ItemGroup>

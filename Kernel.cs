@@ -7,7 +7,7 @@ namespace EstaconOS
 {
     public class Kernel : Sys.Kernel
     {
-        const string OS_NAME = "zak";
+        const string OS_NAME = "Estacon";
         // First argument is command, second is nickname
         List<string[]> nicknames = new();
 
