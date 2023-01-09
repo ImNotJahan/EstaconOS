@@ -45,19 +45,23 @@ namespace EstaconOS.Graphics
 
         public static void Display()
         {
+            // I had a lot of issues regarding size and bit of backgrounds
             try
             {
                 DisplayHandler.canvas.DrawImage(BACKGROUND, 0, 0, DisplayHandler.SCREEN_SIZE[0], DisplayHandler.SCREEN_SIZE[1]);
             }
             catch (Exception e)
             {
-                DisplayHandler.canvas.DrawString(e.ToString(), DisplayHandler.FONT, new Pen(Color.Red, 20), 100, 100);
+                DisplayHandler.pen.Color = Color.Red;
+                DisplayHandler.canvas.DrawString(e.ToString(), DisplayHandler.FONT, DisplayHandler.pen, 100, 100);
             }
 
             DisplayHandler.canvas.DrawImageAlpha(ICON_BACKGROUND, 400, 400);
             DisplayHandler.canvas.DrawImageAlpha(MISSING_ICON, 400, 400);
             DisplayHandler.canvas.DrawImageAlpha(POWER_BUTTON, 0, 0);
-            DisplayHandler.canvas.DrawString(DateTime.Now.ToString("D"), DisplayHandler.FONT, new Pen(Color.Black), 20, 16);
+
+            DisplayHandler.pen.Color = Color.Black;
+            DisplayHandler.canvas.DrawString(DateTime.Now.ToString("D"), DisplayHandler.FONT, DisplayHandler.pen, 20, 16);
 
             GetClockPixels();
         }
@@ -69,7 +73,7 @@ namespace EstaconOS.Graphics
             int mx = (int)MouseManager.X;
             int my = (int)MouseManager.Y;
 
-            if(MouseManager.MouseState == MouseState.Left)
+            if(MouseManager.LastMouseState == MouseState.Left && MouseManager.MouseState == MouseState.None)
             {
                 if (mx >= 1850 && my >= 20 && mx < 1900 && my < 70)
                 {
@@ -88,21 +92,23 @@ namespace EstaconOS.Graphics
         static string lastTime = "";
         static void UpdateClock()
         {
-            string time = DateTime.Now.ToString("t");
+            string time = DateTime.Now.ToString("T");
 
             if (lastTime == time) return;
 
             lastTime = time;
 
-            for (int x = 0; x < 8 * 16; x++)
+            for (int x = 0; x < 11 * 16; x++)
             {
                 for (int y = 0; y < 16; y++)
                 {
-                    DisplayHandler.canvas.DrawPoint(new Pen(pixelsUnderClock[y * 16 * 8 + x]), 20 + x, 58 + y);
+                    DisplayHandler.pen.Color = pixelsUnderClock[y * 16 * 8 + x];
+                    DisplayHandler.canvas.DrawPoint(DisplayHandler.pen, 20 + x, 58 + y);
                 }
             }
 
-            DisplayHandler.canvas.DrawString(time, DisplayHandler.FONT, new Pen(Color.Black), 20, 58);
+            DisplayHandler.pen.Color = Color.Black;
+            DisplayHandler.canvas.DrawString(time, DisplayHandler.FONT, DisplayHandler.pen, 20, 58);
         }
 
         static void GetClockPixels()

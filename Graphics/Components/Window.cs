@@ -32,7 +32,9 @@ namespace EstaconOS.Graphics.Components
             DisplayHandler.canvas.DrawFilledRectangle(TASKBAR_PEN, x, y, width, 40);
             DisplayHandler.canvas.DrawFilledRectangle(WINDOW_PEN, x, y + 40, width, height);
             DisplayHandler.canvas.DrawImage(Desktop.WINDOW_OPERATORS, x + width - 120, y);
-            DisplayHandler.canvas.DrawString(title, DisplayHandler.FONT, new Pen(Color.White), x + 12, y + 12);
+
+            DisplayHandler.pen.Color = Color.White;
+            DisplayHandler.canvas.DrawString(title, DisplayHandler.FONT, DisplayHandler.pen, x + 12, y + 12);
 
             listIndex = DisplayHandler.windows.Count;
             DisplayHandler.windows.Add(this);
@@ -55,7 +57,8 @@ namespace EstaconOS.Graphics.Components
             {
                 for (int y = 0; y < height + 40; y++)
                 {
-                    DisplayHandler.canvas.DrawPoint(new Pen(pixelsBehindWindow[y * (height + 40) + x]), this.x + x, this.y + y); 
+                    DisplayHandler.pen.Color = pixelsBehindWindow[y * (height + 40) + x];
+                    DisplayHandler.canvas.DrawPoint(DisplayHandler.pen, this.x + x, this.y + y); 
                 }
             }
         }
@@ -65,7 +68,7 @@ namespace EstaconOS.Graphics.Components
             int mx = (int)MouseManager.X;
             int my = (int)MouseManager.Y;
 
-            if (MouseManager.MouseState == MouseState.Left)
+            if (MouseManager.LastMouseState == MouseState.Left && MouseManager.MouseState == MouseState.None)
             {
                 if (my >= y && my < y + 40)
                 {

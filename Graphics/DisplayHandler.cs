@@ -19,6 +19,8 @@ namespace EstaconOS.Graphics
         private static byte[] Font;
         public static PCScreenFont FONT;
 
+        public static Pen pen = new Pen(Color.White);
+
         public static void init()
         {
             FONT = PCScreenFont.LoadFont(Font);
@@ -27,8 +29,6 @@ namespace EstaconOS.Graphics
 
             Desktop.init();
             Desktop.Display();
-
-            //canvas.DrawString("test", FONT, new Pen(Color.Blue, 20), 100, 100);
         }
 
         public static void Update()

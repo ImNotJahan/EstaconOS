@@ -33,7 +33,8 @@ namespace EstaconOS.Graphics
                     int i = y * MS + x;
 
                     // Draws pixels that were underneath mouse
-                    DisplayHandler.canvas.DrawPoint(new Pen(pixelsUnderneath[i]), previousMouseCords[0] + x, previousMouseCords[1] + y);
+                    DisplayHandler.pen.Color = pixelsUnderneath[i];
+                    DisplayHandler.canvas.DrawPoint(DisplayHandler.pen, previousMouseCords[0] + x, previousMouseCords[1] + y);
                 }
             }
 
